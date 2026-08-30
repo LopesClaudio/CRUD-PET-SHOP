@@ -1,0 +1,11 @@
+USE crud_petshop;
+
+CREATE TABLE pets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pet VARCHAR(100) NOT NULL,
+    tutor VARCHAR(100) NOT NULL,
+    endereco VARCHAR(255) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    telefone VARCHAR(20),
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

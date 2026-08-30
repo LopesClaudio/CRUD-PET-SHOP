@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetShop da Vila</title>
 </head>
+
 <body>
+
     <h1>Cadastro de Pets</h1>
-    <form action="formCadastro">
+
+    <form id="formCadastro">
 
         <label for="pet">Pet:</label>
         <input type="text" name="pet" id="pet" required>
@@ -21,17 +24,17 @@
 
         <label for="endereco">Endereço:</label>
         <input type="text" name="endereco" id="endereco" required>
-        
+
         <br><br>
 
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required>
-        
+
         <br><br>
 
         <label for="telefone">Telefone:</label>
-        <input type="telefone" name="telefone" id="telefone" required>
-        
+        <input type="tel" name="telefone" id="telefone" required>
+
         <br><br>
 
         <button type="submit">Cadastrar</button>
@@ -42,7 +45,5 @@
 
     <script src="script.js"></script>
 
-    
-    
 </body>
 </html>
