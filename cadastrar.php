@@ -5,7 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 $host = "localhost";
 $banco = "crud_petshop";
 $usuario = "root";
-$senha = "p3821@4190tJ";
+$senha = "97b3@o519mJ";
 
 try {
 
