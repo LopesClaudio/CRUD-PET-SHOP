@@ -1,54 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PetShop da Vila</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="caixa">
-        <h1>Cadastro de Pets</h1>
 
-        <form id="formCadastro">
+    <div class="container">
 
-            <label for="pet">Pet:</label>
-            <input type="text" name="pet" id="pet" required>
+        <!-- CREATE -->
+        <div class="caixa">
 
-            <br><br>
+            <h1>Cadastro de Pets</h1>
 
-            <label for="tutor">Tutor:</label>
-            <input type="text" name="tutor" id="tutor" required>
+            <form id="formCadastro">
 
-            <br><br>
+                <label for="pet">Pet:</label>
+                <input type="text" name="pet" id="pet" required>
 
-            <label for="endereco">Endereço:</label>
-            <input type="text" name="endereco" id="endereco" required>
+                <br><br>
 
-            <br><br>
+                <label for="tutor">Tutor:</label>
+                <input type="text" name="tutor" id="tutor" required>
 
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
+                <br><br>
 
-            <br><br>
+                <label for="endereco">Endereço:</label>
+                <input type="text" name="endereco" id="endereco" required>
 
-            <label for="telefone">Telefone:</label>
-            <input type="tel" name="telefone" id="telefone" required>
+                <br><br>
 
-            <br><br>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
 
-            <button type="submit">Cadastrar</button>
+                <br><br>
 
-        </form>
-        <p id="mensagem"></p>
-        
+                <label for="telefone">Telefone:</label>
+                <input type="tel" name="telefone" id="telefone" required>
+
+                <br><br>
+
+                <button type="submit">Cadastrar</button>
+
+            </form>
+
+            <p id="mensagem"></p>
+
+        </div>
+
+
+        <!-- READ -->
+        <div class="caixa">
+
+            <h1>Pets cadastrados</h1>
+
+            <table border="1">
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Pet</th>
+                        <th>Tutor</th>
+                        <th>Endereço</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Criado em</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="listaPets">
+                </tbody>
+
+            </table>
+
+        </div>
+
     </div>
 
     <script src="script.js"></script>
-    
-
-    
 
 </body>
+
 </html>
+
