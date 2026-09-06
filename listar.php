@@ -17,9 +17,27 @@ try {
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT * FROM pets ORDER BY id DESC";
+    $busca = trim($_GET["busca"] ?? "");
 
-    $stmt = $pdo->query($sql);
+    if ($busca === "") {
+
+        $sql = "SELECT * FROM pets ORDER BY id DESC";
+
+        $stmt = $pdo->query($sql);
+
+    } else {
+
+        $sql = "SELECT * FROM pets
+                WHERE pet LIKE :busca
+                ORDER BY id DESC";
+
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->execute([
+            ":busca" => "%$busca%"
+        ]);
+
+    }
 
     $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

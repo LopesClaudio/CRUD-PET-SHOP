@@ -15,6 +15,7 @@
     <div class="container">
 
         <!-- CREATE -->
+
         <div class="caixa">
 
             <h1>Cadastro de Pets</h1>
@@ -56,30 +57,22 @@
 
 
         <!-- READ -->
+
         <div class="caixa">
 
-            <h1>Pets cadastrados</h1>
+            <h1>Pesquisar Pet</h1>
 
-            <table border="1">
+            <input
+                type="text"
+                id="campoBusca"
+                placeholder="Digite o nome do pet"
+            >
 
-                <thead>
+            <button type="button" id="botaoBuscar">
+                Buscar
+            </button>
 
-                    <tr>
-                        <th>ID</th>
-                        <th>Pet</th>
-                        <th>Tutor</th>
-                        <th>Endereço</th>
-                        <th>Email</th>
-                        <th>Telefone</th>
-                        <th>Criado em</th>
-                    </tr>
-
-                </thead>
-
-                <tbody id="listaPets">
-                </tbody>
-
-            </table>
+            <div id="resultadoBusca"></div>
 
         </div>
 
@@ -90,4 +83,3 @@
 </body>
 
 </html>
-
