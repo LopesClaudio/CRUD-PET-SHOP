@@ -5,7 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 $host = "localhost";
 $banco = "crud_petshop";
 $usuario = "root";
-$senha = "SUA_SENHA_DO_BANCO";
+$senha = "97b3@o519mJ";
 
 try {
     $pdo = new PDO(
