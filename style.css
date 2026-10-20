@@ -34,7 +34,6 @@ h1 {
     font-size: 25px;
 }
 
-
 label {
     display: block;
     margin-bottom: 7px;
@@ -57,8 +56,6 @@ input:focus {
     box-shadow: 0 0 0 3px rgba(242, 140, 40, 0.15);
 }
 
-
-
 button {
     padding: 12px 20px;
     border: none;
@@ -75,24 +72,37 @@ button:hover {
     background-color: #d97706;
 }
 
+button:focus-visible {
+    outline: 3px solid #333;
+    outline-offset: 2px;
+}
+
 #botaoBuscar {
     margin-top: 10px;
     width: 100%;
 }
 
+#botaoCancelar {
+    margin-top: 8px;
+    background-color: #64748b;
+}
 
+#botaoCancelar:hover {
+    background-color: #475569;
+}
+
+#botaoCancelar[hidden] {
+    display: none;
+}
 
 #mensagem {
     margin-top: 20px;
     font-weight: bold;
 }
 
-
-
 #resultadoBusca {
     margin-top: 25px;
 }
-
 
 #resultadoBusca > div {
     background-color: #fffaf5;
@@ -103,14 +113,12 @@ button:hover {
     margin-bottom: 15px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
     transition: 0.2s;
+    overflow-wrap: anywhere;
 }
 
 #resultadoBusca > div:hover {
-    transform: translateY(-2px);
     box-shadow: 0 5px 14px rgba(0, 0, 0, 0.09);
 }
-
-
 
 #resultadoBusca p {
     margin: 8px 0;
@@ -121,18 +129,13 @@ button:hover {
     color: #d97706;
 }
 
-/* LINHA ENTRE RESULTADOS */
-
 #resultadoBusca hr {
     border: none;
     border-top: 1px solid #f1dfcc;
     margin-top: 18px;
 }
 
-/* RESPONSIVO */
-
 @media (max-width: 800px) {
-
     body {
         padding: 20px;
     }
@@ -144,7 +147,6 @@ button:hover {
     .caixa {
         width: 100%;
     }
-
 }
 
 

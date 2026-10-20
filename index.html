@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>PetShop da Vila</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,13 +12,15 @@
 
     <div class="container">
 
-        <!-- CREATE -->
+        <!-- CREATE E UPDATE -->
 
         <div class="caixa">
 
             <h1>Cadastro de Pets</h1>
 
             <form id="formCadastro">
+
+                <input type="hidden" name="id" id="id">
 
                 <label for="pet">Pet:</label>
                 <input type="text" name="pet" id="pet" required>
@@ -47,14 +47,19 @@
 
                 <br><br>
 
-                <button type="submit">Cadastrar</button>
+                <button type="submit" id="botaoSalvar">
+                    Cadastrar
+                </button>
+
+                <button type="button" id="botaoCancelar" hidden>
+                    Cancelar edição
+                </button>
 
             </form>
 
-            <p id="mensagem"></p>
+            <p id="mensagem" aria-live="polite"></p>
 
         </div>
-
 
         <!-- READ -->
 
@@ -81,5 +86,5 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
+

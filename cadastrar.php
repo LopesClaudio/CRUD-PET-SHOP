@@ -8,7 +8,6 @@ $usuario = "root";
 $senha = "97b3@o519mJ";
 
 try {
-
     $pdo = new PDO(
         "mysql:host=$host;dbname=$banco;charset=utf8mb4",
         $usuario,
@@ -30,17 +29,17 @@ try {
         $email === "" ||
         $telefone === ""
     ) {
-
         echo json_encode([
             "sucesso" => false,
             "mensagem" => "Todos os campos são obrigatórios."
         ]);
-
         exit;
     }
 
-    $sql = "INSERT INTO pets (pet, tutor, endereco, email, telefone)
-            VALUES (:pet, :tutor, :endereco, :email, :telefone)";
+    $sql = "INSERT INTO pets
+            (pet, tutor, endereco, email, telefone)
+            VALUES
+            (:pet, :tutor, :endereco, :email, :telefone)";
 
     $stmt = $pdo->prepare($sql);
 
@@ -58,9 +57,10 @@ try {
     ]);
 
 } catch (PDOException $e) {
+    http_response_code(500);
 
     echo json_encode([
         "sucesso" => false,
-        "mensagem" => "Erro ao cadastrar Pet: " . $e->getMessage()
+        "mensagem" => "Erro ao cadastrar o pet."
     ]);
 }
