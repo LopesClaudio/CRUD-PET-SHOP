@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
 }
@@ -135,7 +136,33 @@ button:focus-visible {
     margin-top: 18px;
 }
 
+/* BOTÃO EDITAR */
+
+.botaoEditar {
+    background-color: #f28c28;
+    margin-top: 10px;
+}
+
+.botaoEditar:hover {
+    background-color: #d97706;
+}
+
+/* BOTÃO EXCLUIR */
+
+.botaoExcluir {
+    background-color: #dc2626;
+    margin-top: 10px;
+    margin-left: 8px;
+}
+
+.botaoExcluir:hover {
+    background-color: #b91c1c;
+}
+
+/* RESPONSIVIDADE */
+
 @media (max-width: 800px) {
+
     body {
         padding: 20px;
     }
@@ -147,8 +174,25 @@ button:focus-visible {
     .caixa {
         width: 100%;
     }
+
 }
 
+@media (max-width: 400px) {
+
+    .caixa {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    button {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+}
 
 
 

@@ -2,19 +2,9 @@
 
 header("Content-Type: application/json; charset=UTF-8");
 
-$host = "localhost";
-$banco = "crud_petshop";
-$usuario = "root";
-$senha = "97b3@o519mJ";
+require_once "conexao.php";
 
 try {
-    $pdo = new PDO(
-        "mysql:host=$host;dbname=$banco;charset=utf8mb4",
-        $usuario,
-        $senha
-    );
-
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $pet = trim($_POST["pet"] ?? "");
     $tutor = trim($_POST["tutor"] ?? "");
@@ -29,10 +19,22 @@ try {
         $email === "" ||
         $telefone === ""
     ) {
+
         echo json_encode([
             "sucesso" => false,
             "mensagem" => "Todos os campos são obrigatórios."
         ]);
+
+        exit;
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+        echo json_encode([
+            "sucesso" => false,
+            "mensagem" => "Digite um email válido."
+        ]);
+
         exit;
     }
 
@@ -57,10 +59,14 @@ try {
     ]);
 
 } catch (PDOException $e) {
+
     http_response_code(500);
 
     echo json_encode([
         "sucesso" => false,
         "mensagem" => "Erro ao cadastrar o pet."
     ]);
+
 }
+
+?>

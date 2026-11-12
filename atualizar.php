@@ -2,21 +2,14 @@
 
 header("Content-Type: application/json; charset=UTF-8");
 
-$host = "localhost";
-$banco = "crud_petshop";
-$usuario = "root";
-$senha = "97b3@o519mJ";
+require_once "conexao.php";
 
 try {
-    $pdo = new PDO(
-        "mysql:host=$host;dbname=$banco;charset=utf8mb4",
-        $usuario,
-        $senha
+
+    $id = filter_var(
+        $_POST["id"] ?? null,
+        FILTER_VALIDATE_INT
     );
-
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
 
     $pet = trim($_POST["pet"] ?? "");
     $tutor = trim($_POST["tutor"] ?? "");
@@ -24,43 +17,48 @@ try {
     $email = trim($_POST["email"] ?? "");
     $telefone = trim($_POST["telefone"] ?? "");
 
+    if (!$id || $id <= 0) {
+
+        echo json_encode([
+            "sucesso" => false,
+            "mensagem" => "ID inválido."
+        ]);
+
+        exit;
+    }
+
     if (
-        !$id ||
         $pet === "" ||
         $tutor === "" ||
         $endereco === "" ||
         $email === "" ||
         $telefone === ""
     ) {
+
         echo json_encode([
             "sucesso" => false,
-            "mensagem" => "Preencha todos os campos corretamente."
+            "mensagem" => "Todos os campos são obrigatórios."
         ]);
+
         exit;
     }
 
-    $verifica = $pdo->prepare(
-        "SELECT id FROM pets WHERE id = :id"
-    );
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-    $verifica->execute([
-        ":id" => $id
-    ]);
-
-    if (!$verifica->fetch()) {
         echo json_encode([
             "sucesso" => false,
-            "mensagem" => "Pet não encontrado."
+            "mensagem" => "Digite um email válido."
         ]);
+
         exit;
     }
 
     $sql = "UPDATE pets SET
-                pet = :pet,
-                tutor = :tutor,
-                endereco = :endereco,
-                email = :email,
-                telefone = :telefone
+            pet = :pet,
+            tutor = :tutor,
+            endereco = :endereco,
+            email = :email,
+            telefone = :telefone
             WHERE id = :id";
 
     $stmt = $pdo->prepare($sql);
@@ -74,16 +72,48 @@ try {
         ":id" => $id
     ]);
 
-    echo json_encode([
-        "sucesso" => true,
-        "mensagem" => "Pet atualizado com sucesso!"
-    ]);
+    if ($stmt->rowCount() > 0) {
+
+        echo json_encode([
+            "sucesso" => true,
+            "mensagem" => "Pet atualizado com sucesso!"
+        ]);
+
+    } else {
+
+        $consulta = $pdo->prepare(
+            "SELECT id FROM pets WHERE id = :id"
+        );
+
+        $consulta->execute([":id" => $id]);
+
+        if ($consulta->fetch()) {
+
+            echo json_encode([
+                "sucesso" => true,
+                "mensagem" => "Nenhuma alteração nos dados do pet."
+            ]);
+
+        } else {
+
+            echo json_encode([
+                "sucesso" => false,
+                "mensagem" => "Pet não encontrado."
+            ]);
+
+        }
+
+    }
 
 } catch (PDOException $e) {
+
     http_response_code(500);
 
     echo json_encode([
         "sucesso" => false,
         "mensagem" => "Erro ao atualizar o pet."
     ]);
+
 }
+
+?>
